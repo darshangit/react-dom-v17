@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import "./App.css";
 import DemoOutput from "./components/Demo/DemoOutput";
 
@@ -7,9 +7,10 @@ function App() {
 
   console.log("APP RUNNING");
 
-  const togglePara = () => {
+  const togglePara = useCallback(() => {
     setShowParagraph((showParagraph) => !showParagraph);
-  };
+  }, []); // use callback saves the the reference of the function across so that react.memo can use the function and wont be rerendered
+
   return (
     <div className="App">
       <h1>Hi There</h1>
